@@ -1,2 +1,5 @@
 # Lyrical-GraphQL
-Starter project from a GraphQL course on Udemy.com
+
+GraphQL course -- updated dependencies and .babelrc file
+
+## Tech Used
