@@ -20,14 +20,17 @@ const SongCreate = ({ mutate }) => {
       //this will rerun the fetchSongs in the songsList component
       refetchQueries: [{ query: fetchSongsQuery }],
     }).then(() => {
-      navigate("/");
+      navigate("/songs/list");
       //setTitle("");
     });
   };
 
   return (
     <div>
-      <Link to="/" className="back-button waves-effect btn-flat btn-small left">
+      <Link
+        to="/songs/list"
+        className="back-button waves-effect btn-flat btn-small left"
+      >
         <i className="material-icons">backspace</i>
       </Link>
       <p style={{ color: "white" }}>.</p>

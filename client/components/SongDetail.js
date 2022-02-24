@@ -16,7 +16,10 @@ const SongDetail = ({ data: { song, loading }, params: { id } }) => {
 
   return (
     <div>
-      <Link to="/" className="back-button waves-effect btn-flat btn-small left">
+      <Link
+        to="/songs/list"
+        className="back-button waves-effect btn-flat btn-small left"
+      >
         <i className="material-icons">backspace</i>
       </Link>
       <p style={{ color: "white" }}>.</p>
