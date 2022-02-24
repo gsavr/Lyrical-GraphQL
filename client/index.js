@@ -4,18 +4,21 @@ import { ApolloClient } from "apollo-client";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { HttpLink } from "apollo-link-http";
 import { ApolloProvider } from "react-apollo";
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 
 import App from "./components/App";
-/* import SongList from "./components/SongList";
-import SongCreate from "./components/SongCreate"; */
 
 const cache = new InMemoryCache();
 const link = new HttpLink({
   uri: "/graphql",
 });
 
-const client = new ApolloClient({ cache, link });
+const client = new ApolloClient({
+  cache,
+  link,
+  /* dataIdFromObject: (o) => o.id,
+  //this take every single piece of data and runs though this fn, thi sidentifies all data inside the apollo store */
+});
 
 const Root = () => {
   return (

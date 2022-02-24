@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import gql from "graphql-tag";
 import { graphql } from "react-apollo";
 import { useNavigate, Link } from "react-router-dom";
+import addSongMutation from "../queries/addSong";
 import fetchSongsQuery from "../queries/fetchSongs";
 
 const SongCreate = ({ mutate }) => {
@@ -26,7 +27,7 @@ const SongCreate = ({ mutate }) => {
 
   return (
     <div>
-      <Link to="/" className="waves-effect btn-flat btn-small left">
+      <Link to="/" className="back-button waves-effect btn-flat btn-small left">
         <i className="material-icons">backspace</i>
       </Link>
       <p style={{ color: "white" }}>.</p>
@@ -39,13 +40,4 @@ const SongCreate = ({ mutate }) => {
   );
 };
 
-const mutation = gql`
-  mutation AddSong($title: String) {
-    addSong(title: $title) {
-      id
-      title
-    }
-  }
-`;
-
-export default graphql(mutation)(SongCreate);
+export default graphql(addSongMutation)(SongCreate);

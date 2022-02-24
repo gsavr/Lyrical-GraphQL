@@ -4,14 +4,28 @@ import { Link } from "react-router-dom";
 import fetchSongsQuery from "../queries/fetchSongs";
 import deleteSongMutation from "../queries/deleteSong";
 
-const SongList = ({ data: { songs, loading } }) => {
+const SongList = ({ data: { songs, loading }, mutate, data }) => {
   //console.log(songs);
+  const onSongDelete = (id) => {
+    mutate({
+      variables: { id },
+      //refetchQueries could be used but refetch is built in on this on graphql since it is on this component
+      //refetchQueries: [{ query: fetchSongsQuery }],
+    }).then(() => data.refetch());
+  };
 
   const renderSongs = () => {
-    return songs.map((song) => {
+    return songs.map(({ title, id }) => {
       return (
-        <li key={song.id} className="collection-item">
-          {song.title}
+        <li key={id} className="collection-item">
+          <Link to={`/songs/${id}`}> {title}</Link>
+          <Link
+            to="#"
+            className="material-icons right"
+            onClick={() => onSongDelete(id)}
+          >
+            delete
+          </Link>
         </li>
       );
     });

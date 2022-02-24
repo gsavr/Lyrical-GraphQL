@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 
 import SongList from "./SongList";
 import SongCreate from "./SongCreate";
+import SongDetail from "./SongDetail";
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
         <Routes>
           <Route exact path="/" element={<SongList />} />
           <Route path="/songs/new" element={<SongCreate />} />
+          <Route path="songs/:id" element={<SongDetail />} />
         </Routes>
       </div>
     </div>
